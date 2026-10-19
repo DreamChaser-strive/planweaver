@@ -19,16 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-说明（中文）
-
-本 Skill 采用 MIT 许可证，含义如下：
-
-- 你可以自由使用、复制、修改、合并、发布、分发、再许可和销售本软件；
-- 唯一要求是保留上述版权声明与许可声明；
-- 本软件按"现状"提供，不附带任何明示或暗示的担保，作者不对使用后果负责。
-
-发布前请把 `不会止步于此` 替换为真实著作权人名称（个人姓名或公司名称），
-与 SKILL.md 中的 `author` 字段保持一致。未替换前不建议正式发布。
