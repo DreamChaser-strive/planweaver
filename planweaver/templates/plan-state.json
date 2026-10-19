@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0",
+  "plan_id": "pw-20261019-001",
+  "meta": {
+    "created_at": "2026-10-19T09:00:00+08:00",
+    "updated_at": "2026-10-19T09:00:00+08:00",
+    "revision": 1,
+    "timezone": "Asia/Shanghai",
+    "horizon_start": "2026-10-19",
+    "horizon_end": "2026-12-13",
+    "active_variant": "standard",
+    "title": "示例计划（请替换为你的目标）"
+  },
+  "constraints": {
+    "capacity": {
+      "weekly_minutes": 900,
+      "buffer_ratio": 0.15,
+      "energy_pattern": "高精力 09:00-12:00，低精力 20:00 后",
+      "daily_capacity_minutes": null
+    },
+    "budget": {
+      "currency": "CNY",
+      "total": 0,
+      "note": "未设预算约束"
+    },
+    "fixed_events": [
+      {
+        "id": "F1",
+        "title": "团队周会",
+        "recurring": true,
+        "weekday": 0,
+        "start": "10:00",
+        "end": "11:00",
+        "rigid": true
+      }
+    ],
+    "protected_blocks": [
+      {
+        "id": "P1",
+        "label": "睡眠",
+        "daily_minutes": 480,
+        "rigid": true
+      },
+      {
+        "id": "P2",
+        "label": "运动",
+        "daily_minutes": 45,
+        "rigid": true
+      }
+    ]
+  },
+  "goals": [
+    {
+      "id": "G1",
+      "name": "完成季度复盘报告",
+      "domain": "work",
+      "outcome": "一份可提交给管理层的季度复盘报告，含数据结论与下季度建议",
+      "acceptance_criteria": [
+        "报告含 3 个核心指标的趋势分析",
+        "结论部分给出至少 2 条可执行建议，并经主管确认"
+      ],
+      "deadline": "2026-11-15",
+      "deadline_rigidity": "soft",
+      "weight": 4,
+      "status": "active",
+      "progress_note": "尚未开始",
+      "prerequisites": [
+        "数据平台账号权限已开通"
+      ],
+      "risks": [
+        "上游数据口径可能调整"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T1",
+      "goal_id": "G1",
+      "title": "导出并清洗三个核心指标数据",
+      "estimate": {
+        "optimistic": 90,
+        "likely": 120,
+        "pessimistic": 180
+      },
+      "depends_on": [],
+      "scheduled": {
+        "week_start": "2026-10-19",
+        "minutes": 120,
+        "slot": "上午"
+      },
+      "due": "2026-10-23",
+      "status": "todo",
+      "actual_minutes": 0,
+      "completed_at": null,
+      "priority": 4,
+      "compression_safe": false,
+      "acceptance_criteria": [
+        "三个指标导出为同一时间粒度，缺失值已标注"
+      ],
+      "blocks": [
+        {
+          "date": "2026-10-20",
+          "start": "09:00",
+          "end": "11:00"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "goal_id": "G1",
+      "title": "列出报告大纲并确认结构",
+      "estimate": {
+        "optimistic": 30,
+        "likely": 45,
+        "pessimistic": 60
+      },
+      "depends_on": [
+        "T1"
+      ],
+      "scheduled": {
+        "week_start": "2026-10-26",
+        "minutes": 45,
+        "slot": "上午"
+      },
+      "due": "2026-10-27",
+      "status": "todo",
+      "actual_minutes": 0,
+      "completed_at": null,
+      "priority": 4,
+      "compression_safe": true,
+      "acceptance_criteria": [
+        "大纲含现状、归因、建议三部分，经主管确认"
+      ]
+    },
+    {
+      "id": "T3",
+      "goal_id": "G1",
+      "title": "撰写报告初稿",
+      "estimate": {
+        "optimistic": 120,
+        "likely": 180,
+        "pessimistic": 240
+      },
+      "depends_on": [
+        "T2"
+      ],
+      "scheduled": {
+        "week_start": "2026-10-26",
+        "minutes": 180,
+        "slot": "下午"
+      },
+      "due": "2026-10-30",
+      "status": "todo",
+      "actual_minutes": 0,
+      "completed_at": null,
+      "priority": 3,
+      "compression_safe": false,
+      "acceptance_criteria": [
+        "初稿覆盖大纲全部小节，含图表 3 张"
+      ]
+    }
+  ],
+  "variants": {
+    "baseline": {
+      "label": "保底",
+      "scope": [
+        "只做 1 个核心指标的复盘"
+      ],
+      "dropped": [
+        "另两个指标的趋势分析",
+        "下季度建议的量化部分"
+      ],
+      "buffer_ratio": 0.2,
+      "capacity_minutes": 2400,
+      "milestones": [
+        {
+          "id": "M1",
+          "title": "单指标结论完成",
+          "due": "2026-10-30",
+          "acceptance": "一页结论，含数据与一条建议"
+        }
+      ]
+    },
+    "standard": {
+      "label": "标准",
+      "scope": [
+        "三个指标完整复盘",
+        "含 2 条可执行建议"
+      ],
+      "dropped": [],
+      "buffer_ratio": 0.15,
+      "capacity_minutes": 3000,
+      "milestones": [
+        {
+          "id": "M1",
+          "title": "数据与大纲就绪",
+          "due": "2026-10-27",
+          "acceptance": "数据清洗完成，大纲确认"
+        },
+        {
+          "id": "M2",
+          "title": "初稿完成",
+          "due": "2026-10-30",
+          "acceptance": "覆盖全部小节"
+        }
+      ]
+    },
+    "sprint": {
+      "label": "冲刺",
+      "scope": [
+        "标准方案全部内容",
+        "追加竞品对标章节"
+      ],
+      "dropped": [],
+      "buffer_ratio": 0.1,
+      "capacity_minutes": 3600,
+      "milestones": [
+        {
+          "id": "M1",
+          "title": "数据与大纲就绪",
+          "due": "2026-10-27",
+          "acceptance": "数据清洗完成，大纲确认"
+        },
+        {
+          "id": "M2",
+          "title": "初稿 + 对标章节完成",
+          "due": "2026-11-02",
+          "acceptance": "含竞品对标 1 节"
+        }
+      ]
+    }
+  },
+  "replans": [],
+  "progress_log": [],
+  "calibration": {
+    "samples": 0,
+    "bias_by_category": {},
+    "notes": "样本不足 3 条时不使用偏差系数，只记录趋势"
+  },
+  "assumptions": [
+    {
+      "id": "A1",
+      "text": "每周可投入 15 小时（900 分钟）",
+      "confidence": "medium",
+      "affects": "可行性判断与方案选择"
+    },
+    {
+      "id": "A2",
+      "text": "数据平台权限本周内可用",
+      "confidence": "medium",
+      "affects": "T1 能否按期开始"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "U1",
+      "question": "管理层是否要求包含竞品对标",
+      "impact": "决定是否需要冲刺方案"
+    }
+  ]
+}

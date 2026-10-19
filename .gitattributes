@@ -1,0 +1,5 @@
+# 统一换行符，避免 Windows/Linux 混用导致脚本执行失败
+* text=auto eol=lf
+
+*.png binary
+*.zip binary
